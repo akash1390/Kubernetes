@@ -1,0 +1,20 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: demojob
+  namespace: myapp
+
+spec:
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      name: myjob-pod
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: job-con
+        image: busybox:latest
+        command: ["sh" , "-c" ,"echo Hello Dosto! && sleep 10"]
+      restartPolicy: Never    

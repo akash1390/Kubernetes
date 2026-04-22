@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysvc
+  namespace: myapp
+
+spec:
+  selector:
+      app: nginx
+  ports:
+      - protocol: TCP
+        port: 80 # outside world port
+        targetPort: 80 # pods port
+  type: ClusterIP
